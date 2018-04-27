@@ -5,15 +5,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.javajokelibrary.Joke;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView jokeTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        jokeTextView = findViewById(R.id.tv_joke);
     }
 
 
@@ -40,7 +47,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
+
+        Joke joke = new Joke();
+
+        String jokeString = joke.tellJoke();
+
+        jokeTextView.setText(jokeString);
+
+        Toast.makeText(this,jokeString, Toast.LENGTH_SHORT).show();
     }
 
 
