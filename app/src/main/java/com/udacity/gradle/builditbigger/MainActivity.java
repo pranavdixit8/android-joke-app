@@ -17,14 +17,14 @@ import com.example.androidjokelibrary.DetailActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView jokeTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        jokeTextView = findViewById(R.id.tv_joke);
+
     }
 
 
@@ -48,25 +48,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void tellJoke(View view) {
-
-//        Joke joke = new Joke();
-
-//        String jokeString = joke.tellJoke();
-
-//        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-
-//        intent.putExtra(Intent.EXTRA_TEXT, jokeString);
-
-//        startActivity(intent);
-
-//        jokeTextView.setText(jokeString);
-
-//        Toast.makeText(this,jokeString, Toast.LENGTH_SHORT).show();
-
-        new EndpointAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
     }
 
 

@@ -15,13 +15,13 @@ import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
 
-public class EndpointAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
+public class EndpointAsyncTask extends AsyncTask<MainActivityFragment, Void, String> {
     private static MyApi myApiService = null;
 
-    private Context context;
+    private MainActivityFragment fragment;
 
     @Override
-    protected String doInBackground(Pair<Context, String>... params) {
+    protected String doInBackground(MainActivityFragment... params) {
 
 
         if(myApiService == null) {
@@ -37,10 +37,13 @@ public class EndpointAsyncTask extends AsyncTask<Pair<Context, String>, Void, St
             myApiService = builder.build();
         }
 
-        context = params[0].first;
-        String name = params[0].second;
+
+        fragment =params[0];
+
+
 
         try {
+
             return myApiService.sayHi().execute().getData();
         } catch (IOException e) {
             return e.getMessage();
@@ -49,11 +52,11 @@ public class EndpointAsyncTask extends AsyncTask<Pair<Context, String>, Void, St
 
     @Override
     protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-
-        Intent intent = new Intent(context, DetailActivity.class);
+        Toast.makeText(fragment.getContext(), result, Toast.LENGTH_LONG).show();
+        fragment.jokeTextView.setText(result);
+        Intent intent = new Intent(fragment.getContext(), DetailActivity.class);
         intent.putExtra(Intent.EXTRA_TEXT, result);
 
-        context.startActivity(intent);
+        fragment.startActivity(intent);
     }
 }
