@@ -1,7 +1,9 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,19 +52,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void tellJoke(View view) {
 
-        Joke joke = new Joke();
+//        Joke joke = new Joke();
 
-        String jokeString = joke.tellJoke();
+//        String jokeString = joke.tellJoke();
 
-        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+//        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
 
-        intent.putExtra(Intent.EXTRA_TEXT, jokeString);
+//        intent.putExtra(Intent.EXTRA_TEXT, jokeString);
 
-        startActivity(intent);
+//        startActivity(intent);
 
 //        jokeTextView.setText(jokeString);
 
 //        Toast.makeText(this,jokeString, Toast.LENGTH_SHORT).show();
+
+        new EndpointAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
     }
 
 
