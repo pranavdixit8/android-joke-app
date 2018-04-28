@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.androidjokelibrary.DetailActivity;
-import com.example.javajokelibrary.Joke;
+//import com.example.javajokelibrary.Joke;
 
 
 public class MainActivity extends AppCompatActivity {
